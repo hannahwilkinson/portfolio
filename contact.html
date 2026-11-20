@@ -28,19 +28,65 @@
 
     <main id="main">
       <section id="contact" class="container section">
-        <h1>Contact</h1>
-        <p class="contact-item">
-          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          <span>Email: <a href="mailto:hannahgracewvu@gmail.com">hannahgracewvu@gmail.com</a></span>
-        </p>
-        <p class="contact-item">
-          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 4.99v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <span>LinkedIn: <a href="https://www.linkedin.com/in/hannahwilkinson0926">linkedin.com/in/hannahwilkinson0926</a></span>
-        </p>
-        <p class="contact-item">
-          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.31 0l-.35.01c-1.55.13-2.46 1.2-2.6 2.28-.15 1.2.65 2.4 2.58 2.28 2.15-.12 3.09-1.2 3.1-2.28.02-1.15-1-2.28-2.73-2.29zM7.21.34A2.66 2.66 0 004.56 2.6C4.41 3.73 5.12 4.87 7 4.85c2.23-.04 3.31-1.37 3.16-2.57-.12-1-1.09-1.92-2.94-1.94zm12.35 8.71a7 7 0 00-.4.02c-5.28.54-5.54.6-15.26.82C-.2 9.9.62 24 9.38 24c8.2 0 18.12-15.15 10.18-14.95zm-1.1 2.7c3.18-.07-2.9 9.53-8.8 9.56-7.46 0-6.44-8.8-5.18-8.85 8.67-.35 10.88-.64 13.98-.71Z"/></svg>
-          <span>SmugMug: <a href="https://hannahwilkinson.smugmug.com">hannahwilkinson.smugmug.com</a></span>
-        </p>
+        <div class="contact-intro">
+          <img class="contact-avatar" src="images/about/hannah-headshot.jpg" width="320" height="320" alt="" />
+          <div>
+            <h1>Contact</h1>
+            <p>Have a project, opportunity, or question? Reach out below or send me a message.</p>
+          </div>
+        </div>
+
+        <ul class="contact-cards">
+          <li class="contact-card">
+            <span class="contact-badge"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
+            <h2>Email</h2>
+            <a class="contact-value" href="mailto:hannahgracewvu@gmail.com">hannahgracewvu@gmail.com</a>
+            <div class="contact-actions">
+              <a class="chip" href="mailto:hannahgracewvu@gmail.com">Send email</a>
+              <button type="button" class="chip" data-copy="hannahgracewvu@gmail.com">Copy address</button>
+            </div>
+          </li>
+          <li class="contact-card">
+            <span class="contact-badge"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 4.99v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+            <h2>LinkedIn</h2>
+            <a class="contact-value" href="https://www.linkedin.com/in/hannahwilkinson0926" target="_blank" rel="noopener">linkedin.com/in/hannahwilkinson0926</a>
+            <div class="contact-actions">
+              <a class="chip" href="https://www.linkedin.com/in/hannahwilkinson0926" target="_blank" rel="noopener">View profile<span class="sr-only"> (opens in a new tab)</span></a>
+            </div>
+          </li>
+          <li class="contact-card">
+            <span class="contact-badge"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.31 0l-.35.01c-1.55.13-2.46 1.2-2.6 2.28-.15 1.2.65 2.4 2.58 2.28 2.15-.12 3.09-1.2 3.1-2.28.02-1.15-1-2.28-2.73-2.29zM7.21.34A2.66 2.66 0 004.56 2.6C4.41 3.73 5.12 4.87 7 4.85c2.23-.04 3.31-1.37 3.16-2.57-.12-1-1.09-1.92-2.94-1.94zm12.35 8.71a7 7 0 00-.4.02c-5.28.54-5.54.6-15.26.82C-.2 9.9.62 24 9.38 24c8.2 0 18.12-15.15 10.18-14.95zm-1.1 2.7c3.18-.07-2.9 9.53-8.8 9.56-7.46 0-6.44-8.8-5.18-8.85 8.67-.35 10.88-.64 13.98-.71Z"/></svg></span>
+            <h2>SmugMug</h2>
+            <a class="contact-value" href="https://hannahwilkinson.smugmug.com" target="_blank" rel="noopener">hannahwilkinson.smugmug.com</a>
+            <div class="contact-actions">
+              <a class="chip" href="https://hannahwilkinson.smugmug.com" target="_blank" rel="noopener">Browse photos<span class="sr-only"> (opens in a new tab)</span></a>
+            </div>
+          </li>
+        </ul>
+        <p id="copy-status" class="sr-only" aria-live="polite"></p>
+
+        <section class="contact-form-wrap" aria-labelledby="message-title">
+          <h2 id="message-title">Send a message</h2>
+          <p class="form-note">Submitting opens your email app with your message ready to send.</p>
+          <form id="contact-form" class="contact-form" data-to="hannahgracewvu@gmail.com">
+            <div class="field">
+              <label for="cf-name">Your name</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="cf-subject">Subject <span class="optional">(optional)</span></label>
+              <input id="cf-subject" name="subject" type="text" />
+            </div>
+            <div class="field field-full">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" name="message" rows="6" required></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn">Open in email app</button>
+              <p id="form-status" class="form-status" aria-live="polite"></p>
+            </div>
+          </form>
+        </section>
       </section>
     </main>
 
