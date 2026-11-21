@@ -186,7 +186,7 @@ h4 { color: var(--ink); }
   padding: 4.5rem 0 6rem;
   background: radial-gradient(640px 420px at 88% 12%, rgba(234, 170, 0, 0.16), transparent 62%);
 }
-.hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 4rem; align-items: center; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 4rem; align-items: center; }
 .hero h1 { margin: 0 0 1rem; font-size: clamp(3rem, 6.5vw, 5.25rem); letter-spacing: -0.03em; }
 .hero .lead { margin: 0 0 1.1rem; font-size: clamp(1.2rem, 2.2vw, 1.45rem); font-weight: 500; color: var(--navy); }
 .hero-sub { max-width: 34rem; margin: 0 0 2.25rem; color: var(--muted); }
@@ -224,7 +224,7 @@ h4 { color: var(--ink); }
 /* ---------- Home: stats ---------- */
 .stats { position: relative; overflow: hidden; padding: 3.75rem 0; background: var(--navy); }
 .stats::after { content: ""; position: absolute; right: -80px; top: -120px; width: 320px; height: 320px; border: 40px solid rgba(234, 170, 0, 0.1); border-radius: 50%; }
-.stats-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.stats-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; }
 .stat { padding-left: 1.25rem; border-left: 2px solid rgba(234, 170, 0, 0.55); }
 .stat-num { display: block; font: 600 clamp(2rem, 3.8vw, 2.85rem)/1.1 var(--font-display); color: var(--gold); font-variant-numeric: tabular-nums; }
 .stat-label { display: block; margin-top: 0.5rem; font-size: 0.93rem; line-height: 1.5; color: rgba(255, 255, 255, 0.82); }
@@ -470,7 +470,8 @@ h4 { color: var(--ink); }
 /* Photos share one shape, so they sit in an even grid; graphics vary, so they stack like a masonry wall */
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
 .gallery--masonry { display: block; columns: 3 280px; column-gap: 1.25rem; }
-.gallery--masonry li { break-inside: avoid; margin-bottom: 1.25rem; }
+/* inline-block + break-inside keeps Safari from splitting a card across two columns */
+.gallery--masonry li { display: inline-block; width: 100%; vertical-align: top; break-inside: avoid; -webkit-column-break-inside: avoid; margin-bottom: 1.25rem; }
 .gallery figure {
   position: relative;
   overflow: hidden;
@@ -538,7 +539,7 @@ h4 { color: var(--ink); }
 html.lb-open { overflow: hidden; }
 
 /* ---------- About ---------- */
-.about-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 5rem; align-items: center; }
+.about-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 5rem; align-items: center; }
 .about-photo { position: relative; isolation: isolate; margin: 0 1.5rem 1.5rem 0; }
 .about-photo::before { content: ""; position: absolute; inset: 1.5rem -1.5rem -1.5rem 1.5rem; z-index: -1; background: var(--gold-soft); border: 2px solid var(--gold); border-radius: var(--radius-lg); }
 .about-photo img { display: block; width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); }
@@ -563,7 +564,7 @@ html.lb-open { overflow: hidden; }
 
 /* ---------- Contact ---------- */
 .page-contact .contact-section { padding-top: 3.25rem; }
-.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: stretch; }
+.contact-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; align-items: stretch; }
 
 .contact-panel {
   position: relative;
@@ -654,12 +655,14 @@ html.lb-open { overflow: hidden; }
 .contact-form-card { padding: 2.5rem; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
 .contact-form-card h2 { margin: 0; font-size: clamp(1.75rem, 3vw, 2.2rem); }
 .form-note { margin: 0.4rem 0 1.75rem; color: var(--muted); }
-.contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+.contact-form { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.1rem; }
 .field { display: flex; flex-direction: column; gap: 0.4rem; }
 .field-full { grid-column: 1 / -1; }
 .field label { font-size: 0.93rem; font-weight: 600; color: var(--ink); }
 .optional { font-weight: 400; color: var(--muted); }
 .field input, .field textarea {
+  width: 100%;
+  min-width: 0;
   padding: 0.85rem 1rem;
   font: inherit;
   font-size: 1rem;
@@ -677,7 +680,7 @@ html.lb-open { overflow: hidden; }
 
 /* ---------- Footer ---------- */
 .site-footer { padding-top: 3.75rem; color: rgba(255, 255, 255, 0.72); background: var(--navy-deep); }
-.footer-inner { display: grid; grid-template-columns: 1.6fr 1fr auto; gap: 2.5rem; align-items: start; padding-bottom: 2.75rem; }
+.footer-inner { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) auto; gap: 2.5rem; align-items: start; padding-bottom: 2.75rem; }
 .logo-light { color: var(--white); }
 .logo-light .logo-mark { color: var(--navy-deep); background: var(--gold); }
 .footer-brand p { max-width: 22rem; margin: 1rem 0 0; font-size: 0.95rem; }
@@ -712,15 +715,19 @@ html.lb-open { overflow: hidden; }
   .reveal { opacity: 1; transform: none; }
 }
 
+/* ---------- Contact stacks earlier (its two cards need room side by side) ---------- */
+@media (max-width: 1100px) {
+  .contact-layout { grid-template-columns: minmax(0, 1fr); max-width: 720px; margin-inline: auto; }
+}
+
 /* ---------- Tablet ---------- */
 @media (max-width: 960px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 3.5rem; }
   .hero-media { width: min(100%, 360px); }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.5rem; }
-  .about-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+  .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.5rem; }
+  .about-grid { grid-template-columns: minmax(0, 1fr); gap: 3.5rem; }
   .about-photo { width: min(100%, 380px); justify-self: center; }
-  .contact-layout { grid-template-columns: 1fr; }
-  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .footer-brand { grid-column: 1 / -1; }
 }
 
@@ -743,7 +750,7 @@ html.lb-open { overflow: hidden; }
   .site-header nav ul { flex-direction: column; align-items: stretch; gap: 0.25rem; }
   .site-header nav a { padding: 0.85rem 1rem; border-radius: 12px; font-size: 1.02rem; }
   .site-header nav a.nav-cta { margin: 0.5rem 0 0; text-align: center; }
-  .page-hero--split .container { grid-template-columns: 1fr; gap: 2.25rem; }
+  .page-hero--split .container { grid-template-columns: minmax(0, 1fr); gap: 2.25rem; }
   .page-hero-photo { width: min(55%, 190px); }
   .page-hero--split .page-hero-actions { justify-self: start; }
 }
@@ -753,7 +760,7 @@ html.lb-open { overflow: hidden; }
   .hero { padding: 3rem 0 4.5rem; }
   .hero-badge { left: -0.5rem; bottom: 1.5rem; max-width: 240px; }
   .hero-media::before { inset: 14px -12px -14px 12px; }
-  .stats-grid { grid-template-columns: 1fr 1fr; gap: 1.75rem 1rem; }
+  .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 1rem; }
   .stat { padding-left: 0.9rem; }
   .cta-inner { padding: 2.25rem 1.75rem; }
   .page-hero { padding: 3.25rem 0 2.75rem; }
@@ -769,12 +776,12 @@ html.lb-open { overflow: hidden; }
   .method-value { font-size: 0.97rem; }
   .method-out { display: none; }
   .copy-btn { grid-column: 2; justify-self: start; }
-  .contact-form { grid-template-columns: 1fr; }
+  .contact-form { grid-template-columns: minmax(0, 1fr); }
   .filter-bar { flex-wrap: nowrap; overflow-x: auto; width: auto; margin-inline: -0.25rem; border-radius: 16px; scrollbar-width: none; }
   .filter-bar::-webkit-scrollbar { display: none; }
   .lb-stage { padding: 4.5rem 0.75rem 6rem; }
   .lb-prev, .lb-next { top: auto; bottom: 1.25rem; transform: none; }
   .lb-prev { left: calc(50% - 62px); }
   .lb-next { right: calc(50% - 62px); }
-  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-inner { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
 }
