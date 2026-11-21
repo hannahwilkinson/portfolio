@@ -102,18 +102,20 @@ if (figures.length && typeof HTMLDialogElement === 'function') {
   const lbTitle = dialog.querySelector('.lb-title');
   const lbCount = dialog.querySelector('.lb-count');
   let current = 0;
+  let list = figures; // only the images showing under the current filter
 
   const show = (i) => {
-    current = (i + figures.length) % figures.length;
-    const source = figures[current].querySelector('img');
-    const caption = figures[current].querySelector('figcaption');
+    current = (i + list.length) % list.length;
+    const source = list[current].querySelector('img');
+    const caption = list[current].querySelector('figcaption');
     lbImg.src = source.currentSrc || source.src;
     lbImg.alt = source.alt;
     lbTitle.textContent = caption ? caption.textContent : '';
-    lbCount.textContent = `${current + 1} / ${figures.length}`;
+    lbCount.textContent = `${current + 1} / ${list.length}`;
   };
   const open = (i) => {
-    show(i);
+    list = figures.filter((f) => !f.closest('[hidden]'));
+    show(list.indexOf(figures[i]));
     document.documentElement.classList.add('lb-open');
     dialog.showModal();
   };
@@ -155,6 +157,27 @@ if (figures.length && typeof HTMLDialogElement === 'function') {
     if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
     touchX = null;
   });
+}
+
+// Portfolio: filter buttons (portfolio.html#events opens straight to that collection)
+const chips = Array.from(document.querySelectorAll('.filter-chip'));
+if (chips.length) {
+  const collections = document.querySelectorAll('.collection');
+  const groups = document.querySelectorAll('.gallery-group');
+  const filterStatus = document.getElementById('filter-status');
+  const applyFilter = (filter, updateUrl) => {
+    if (!chips.some((chip) => chip.dataset.filter === filter)) filter = 'all';
+    chips.forEach((chip) => chip.setAttribute('aria-pressed', String(chip.dataset.filter === filter)));
+    collections.forEach((c) => { c.hidden = filter !== 'all' && c.dataset.collection !== filter; });
+    groups.forEach((g) => { g.hidden = !g.querySelector('.collection:not([hidden])'); });
+    const count = document.querySelectorAll('.collection:not([hidden]) .gallery figure').length;
+    if (filterStatus) filterStatus.textContent = `Showing ${count} ${count === 1 ? 'item' : 'items'}`;
+    if (updateUrl) history.replaceState(null, '', filter === 'all' ? window.location.pathname : `#${filter}`);
+  };
+  chips.forEach((chip) => chip.addEventListener('click', () => applyFilter(chip.dataset.filter, true)));
+  const fromHash = () => applyFilter(decodeURIComponent(window.location.hash.slice(1)) || 'all', false);
+  fromHash();
+  window.addEventListener('hashchange', fromHash);
 }
 
 // Contact page: "Copy" button
