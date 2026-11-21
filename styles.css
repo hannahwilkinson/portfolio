@@ -470,6 +470,11 @@ h4 { color: var(--ink); }
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
 /* Photo thumbnails share one 3:2 shape; a vertical photo is cropped for the grid only (the viewer shows it whole) */
 .gallery:not(.gallery--graphics) img { aspect-ratio: 3 / 2; object-fit: cover; }
+/* Odd-sized photo collections: the first photo becomes a wide featured shot so the rest fill even rows (two-column screens only) */
+@media (min-width: 908px) {
+  .gallery:not(.gallery--graphics):has(> li:nth-child(odd):last-child):has(> li:nth-child(3)) > li:first-child { grid-column: 1 / -1; }
+  .gallery:not(.gallery--graphics):has(> li:nth-child(odd):last-child):has(> li:nth-child(3)) > li:first-child img { aspect-ratio: 16 / 9; }
+}
 /* Graphics: 3 banners then 3 spotlights, so a 3-column grid gives two even rows */
 .gallery--graphics { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
 /* The first three are banners; give them one shared shape so the row's bottoms line up (the viewer still shows the full image) */
