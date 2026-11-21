@@ -295,7 +295,8 @@ h4 { color: var(--ink); }
 .page-hero-photo::before { content: ""; position: absolute; inset: 16px -16px -16px 16px; z-index: -1; border: 2px solid var(--gold); border-radius: 999px 999px 24px 24px; }
 .page-hero-photo img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 999px 999px 24px 24px; box-shadow: var(--shadow-lg); }
 
-.page-hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 1.75rem; }
+.page-hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+.page-hero--split .page-hero-actions { justify-self: end; }
 .btn:hover .btn-icon-down { transform: translateY(2px); }
 .jump-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
 .jump-links a {
@@ -718,6 +719,7 @@ html.lb-open { overflow: hidden; }
   .site-header nav a.nav-cta { margin: 0.5rem 0 0; text-align: center; }
   .page-hero--split .container { grid-template-columns: 1fr; gap: 2.25rem; }
   .page-hero-photo { width: min(70%, 250px); }
+  .page-hero--split .page-hero-actions { justify-self: start; }
 }
 
 @media (max-width: 600px) {
