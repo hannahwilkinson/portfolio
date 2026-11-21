@@ -192,8 +192,9 @@ h4 { color: var(--ink); }
 .hero-sub { max-width: 34rem; margin: 0 0 2.25rem; color: var(--muted); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
 
-.hero-media { position: relative; isolation: isolate; justify-self: center; width: min(100%, 410px); }
-.hero-media::before {
+.hero-media { position: relative; justify-self: center; width: min(100%, 410px); }
+.hero-frame { position: relative; isolation: isolate; }
+.hero-frame::before {
   content: "";
   position: absolute;
   inset: 22px -22px -22px 22px;
@@ -205,8 +206,8 @@ h4 { color: var(--ink); }
 .hero-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .hero-badge {
   position: absolute;
-  left: -2.5rem;
-  bottom: 2.75rem;
+  left: -5rem;
+  bottom: 22%;
   display: flex;
   align-items: center;
   gap: 0.85rem;
@@ -220,6 +221,7 @@ h4 { color: var(--ink); }
 .hero-badge-icon svg { width: 24px; height: 24px; fill: var(--navy); }
 .hero-badge strong { display: block; font-size: 0.9rem; line-height: 1.3; color: var(--navy); }
 .hero-badge strong + span { display: block; margin-top: 0.2rem; font-size: 0.8rem; line-height: 1.4; color: var(--muted); }
+.hero-badge--bs { left: auto; right: -5rem; bottom: -4%; }
 
 /* ---------- Home: stats ---------- */
 .stats { position: relative; overflow: hidden; padding: 3.75rem 0; background: var(--navy); }
@@ -467,11 +469,12 @@ h4 { color: var(--ink); }
 .collection-title { display: flex; align-items: baseline; gap: 0.75rem; margin: 0 0 1.25rem; font-size: 1.4rem; }
 .collection-count { font: 500 0.85rem/1 var(--font-body); letter-spacing: 0; color: var(--muted); }
 
-/* Photos share one shape, so they sit in an even grid; graphics vary, so they stack like a masonry wall */
+/* Photos share one shape, so they sit in an even 2-column grid */
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
-.gallery--masonry { display: block; columns: 3 280px; column-gap: 1.25rem; }
-/* inline-block + break-inside keeps Safari from splitting a card across two columns */
-.gallery--masonry li { display: inline-block; width: 100%; vertical-align: top; break-inside: avoid; -webkit-column-break-inside: avoid; margin-bottom: 1.25rem; }
+/* Graphics: 3 banners then 3 spotlights, so a 3-column grid gives two even rows */
+.gallery--graphics { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
+/* The first three are banners; give them one shared shape so the row's bottoms line up (the viewer still shows the full image) */
+.gallery--graphics li:nth-child(-n+3) img { aspect-ratio: 40 / 21; object-fit: cover; }
 .gallery figure {
   position: relative;
   overflow: hidden;
@@ -720,8 +723,17 @@ html.lb-open { overflow: hidden; }
   .contact-layout { grid-template-columns: minmax(0, 1fr); max-width: 720px; margin-inline: auto; }
 }
 
+/* Narrow laptops: less room beside the photo, so the badges float in closer */
+@media (min-width: 961px) and (max-width: 1100px) {
+  .hero-badge { left: -1rem; }
+  .hero-badge--bs { right: -1rem; }
+}
+
 /* ---------- Tablet ---------- */
 @media (max-width: 960px) {
+  .gallery--graphics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-badge { left: -10rem; }
+  .hero-badge--bs { left: auto; right: -10rem; }
   .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 3.5rem; }
   .hero-media { width: min(100%, 360px); }
   .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.5rem; }
@@ -729,6 +741,12 @@ html.lb-open { overflow: hidden; }
   .about-photo { width: min(100%, 380px); justify-self: center; }
   .footer-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .footer-brand { grid-column: 1 / -1; }
+}
+
+/* Small tablets and phones: degree badges sit under the photo instead of covering it */
+@media (max-width: 760px) {
+  .hero-badge, .hero-badge--bs { position: static; max-width: none; margin-top: 0.75rem; box-shadow: var(--shadow-sm); }
+  .hero-frame + .hero-badge { margin-top: 2rem; }
 }
 
 /* ---------- Phone ---------- */
@@ -758,8 +776,8 @@ html.lb-open { overflow: hidden; }
 @media (max-width: 600px) {
   .section { padding-top: 4rem; padding-bottom: 4rem; }
   .hero { padding: 3rem 0 4.5rem; }
-  .hero-badge { left: -0.5rem; bottom: 1.5rem; max-width: 240px; }
-  .hero-media::before { inset: 14px -12px -14px 12px; }
+  .gallery--graphics { grid-template-columns: minmax(0, 1fr); }
+  .hero-frame::before { inset: 14px -12px -14px 12px; }
   .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 1rem; }
   .stat { padding-left: 0.9rem; }
   .cta-inner { padding: 2.25rem 1.75rem; }
