@@ -288,7 +288,16 @@ h4 { color: var(--ink); }
 .page-hero h1 { margin: 0 0 0.85rem; font-size: clamp(2.6rem, 5.5vw, 4rem); letter-spacing: -0.025em; }
 .page-intro-text { max-width: 42rem; margin: 0; font-size: 1.15rem; color: var(--muted); }
 
-.jump-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
+/* Inner page hero with a photo on the right (Contact) */
+.page-hero--split { padding-bottom: 4rem; }
+.page-hero--split .container { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3rem; align-items: center; }
+.page-hero-photo { position: relative; isolation: isolate; width: 290px; margin: 0 1.1rem 1.1rem 0; }
+.page-hero-photo::before { content: ""; position: absolute; inset: 16px -16px -16px 16px; z-index: -1; border: 2px solid var(--gold); border-radius: 999px 999px 24px 24px; }
+.page-hero-photo img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 999px 999px 24px 24px; box-shadow: var(--shadow-lg); }
+
+.page-hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 1.75rem; }
+.btn:hover .btn-icon-down { transform: translateY(2px); }
+.jump-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
 .jump-links a {
   padding: 0.5rem 1.1rem;
   font-size: 0.93rem;
@@ -558,16 +567,16 @@ html.lb-open { overflow: hidden; }
   position: relative;
   overflow: hidden;
   padding: 2.25rem;
-  color: var(--white);
-  background: linear-gradient(150deg, var(--navy) 0%, var(--navy-soft) 100%);
+  color: var(--navy);
+  background: linear-gradient(150deg, #eef4fc 0%, #dce8f7 100%);
+  border: 1px solid #cfdcef;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-sm);
 }
-.contact-panel::after { content: ""; position: absolute; right: -90px; bottom: -90px; width: 240px; height: 240px; border: 34px solid rgba(234, 170, 0, 0.13); border-radius: 50%; pointer-events: none; }
-.contact-person { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.75rem; }
-.contact-avatar { flex: none; width: 76px; height: 76px; object-fit: cover; border: 3px solid var(--gold); border-radius: 50%; }
-.contact-name { margin: 0; font: 600 1.4rem/1.2 var(--font-display); }
-.contact-role { margin: 0.3rem 0 0; font-size: 0.92rem; line-height: 1.45; color: rgba(255, 255, 255, 0.75); }
+.contact-panel::after { content: ""; position: absolute; right: -90px; bottom: -90px; width: 240px; height: 240px; border: 34px solid rgba(0, 40, 85, 0.05); border-radius: 50%; pointer-events: none; }
+.contact-person { margin-bottom: 1.5rem; padding-bottom: 1.25rem; border-bottom: 1px solid #cfdcef; }
+.contact-name { margin: 0; font: 600 1.5rem/1.2 var(--font-display); color: var(--navy); }
+.contact-role { margin: 0.35rem 0 0; font-size: 0.95rem; line-height: 1.45; color: #4a5d78; }
 
 .contact-methods { position: relative; z-index: 1; display: grid; gap: 0.75rem; margin: 0; padding: 0; list-style: none; }
 .contact-method {
@@ -576,23 +585,24 @@ html.lb-open { overflow: hidden; }
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.1rem;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--white);
+  border: 1px solid #d4e1f2;
   border-radius: 16px;
-  transition: background 0.2s, border-color 0.2s, transform 0.2s var(--ease);
+  box-shadow: 0 1px 2px rgba(0, 40, 85, 0.05);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s var(--ease);
 }
-.contact-method:hover, .contact-method:focus-within { background: rgba(255, 255, 255, 0.11); border-color: rgba(234, 170, 0, 0.55); transform: translateX(3px); }
+.contact-method:hover, .contact-method:focus-within { border-color: var(--gold); box-shadow: 0 10px 22px -14px rgba(0, 40, 85, 0.45); transform: translateX(3px); }
 .method-icon { flex: none; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 13px; background: var(--gold); }
 .method-icon svg { width: 22px; height: 22px; fill: var(--navy); }
 .method-body { display: flex; flex-direction: column; min-width: 0; flex: 1; }
-.method-label { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); }
-.method-value { font-weight: 500; color: var(--white); text-decoration: none; overflow-wrap: break-word; }
+.method-label { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #5b6d87; }
+.method-value { font-weight: 500; color: var(--navy); text-decoration: none; overflow-wrap: break-word; }
 .method-value:hover { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 3px; }
 .method-value.stretched::after { content: ""; position: absolute; inset: 0; border-radius: 16px; }
 .method-value:focus-visible { outline: none; }
 .method-value.stretched:focus-visible::after, .method-value:not(.stretched):focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
-.method-out { flex: none; width: 20px; height: 20px; fill: rgba(255, 255, 255, 0.55); transition: fill 0.2s, transform 0.2s var(--ease); }
-.contact-method:hover .method-out { fill: var(--gold); transform: translate(2px, -2px); }
+.method-out { flex: none; width: 20px; height: 20px; fill: #8a9bb3; transition: fill 0.2s, transform 0.2s var(--ease); }
+.contact-method:hover .method-out { fill: var(--gold-text); transform: translate(2px, -2px); }
 
 .copy-btn {
   position: relative;
@@ -603,15 +613,15 @@ html.lb-open { overflow: hidden; }
   gap: 0.4rem;
   padding: 0.45rem 0.85rem;
   font: 600 0.85rem/1 var(--font-body);
-  color: var(--white);
+  color: var(--navy);
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(0, 40, 85, 0.25);
   border-radius: 999px;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 .copy-btn svg { width: 15px; height: 15px; fill: currentColor; }
-.copy-btn:hover { color: var(--navy); background: var(--white); border-color: var(--white); }
+.copy-btn:hover { color: var(--white); background: var(--navy); border-color: var(--navy); }
 .copy-btn.is-copied { color: var(--white); background: #15803d; border-color: #15803d; }
 
 .contact-form-card { padding: 2.5rem; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
@@ -706,6 +716,8 @@ html.lb-open { overflow: hidden; }
   .site-header nav ul { flex-direction: column; align-items: stretch; gap: 0.25rem; }
   .site-header nav a { padding: 0.85rem 1rem; border-radius: 12px; font-size: 1.02rem; }
   .site-header nav a.nav-cta { margin: 0.5rem 0 0; text-align: center; }
+  .page-hero--split .container { grid-template-columns: 1fr; gap: 2.25rem; }
+  .page-hero-photo { width: min(70%, 250px); }
 }
 
 @media (max-width: 600px) {
