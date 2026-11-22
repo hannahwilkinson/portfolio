@@ -99,6 +99,7 @@ if (figures.length && typeof HTMLDialogElement === 'function') {
   document.body.appendChild(dialog);
 
   const lbImg = dialog.querySelector('.lb-img');
+  const lbStage = dialog.querySelector('.lb-stage');
   const lbTitle = dialog.querySelector('.lb-title');
   const lbCount = dialog.querySelector('.lb-count');
   let current = 0;
@@ -110,6 +111,10 @@ if (figures.length && typeof HTMLDialogElement === 'function') {
     const caption = list[current].querySelector('figcaption');
     lbImg.src = source.currentSrc || source.src;
     lbImg.alt = source.alt;
+    // Full-page website screenshots are much taller than wide: show them full width and let the viewer scroll
+    const tall = Number(source.getAttribute('height')) > 2 * Number(source.getAttribute('width'));
+    lbImg.classList.toggle('lb-img--tall', tall);
+    lbStage.scrollTop = 0;
     lbTitle.textContent = caption ? caption.textContent : '';
     lbCount.textContent = `${current + 1} / ${list.length}`;
   };
@@ -168,7 +173,10 @@ if (chips.length) {
   const applyFilter = (filter, updateUrl) => {
     if (!chips.some((chip) => chip.dataset.filter === filter)) filter = 'all';
     chips.forEach((chip) => chip.setAttribute('aria-pressed', String(chip.dataset.filter === filter)));
-    collections.forEach((c) => { c.hidden = filter !== 'all' && c.dataset.collection !== filter; });
+    collections.forEach((c) => {
+      const group = c.closest('.gallery-group');
+      c.hidden = filter !== 'all' && c.dataset.collection !== filter && !(group && group.dataset.group === filter);
+    });
     groups.forEach((g) => { g.hidden = !g.querySelector('.collection:not([hidden])'); });
     const count = document.querySelectorAll('.collection:not([hidden]) .gallery figure').length;
     if (filterStatus) filterStatus.textContent = `Showing ${count} ${count === 1 ? 'item' : 'items'}`;

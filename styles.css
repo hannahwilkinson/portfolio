@@ -479,6 +479,8 @@ h4 { color: var(--ink); }
 .gallery--graphics { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
 /* The first three are banners; give them one shared shape so the row's bottoms line up (the viewer still shows the full image) */
 .gallery--graphics li:nth-child(-n+3) img { aspect-ratio: 40 / 21; object-fit: cover; }
+/* Websites: full-page screenshots, so thumbnails show the top of the page (the viewer scrolls the whole page) */
+.gallery.gallery--websites img { aspect-ratio: 1 / 1; object-position: top; }
 .gallery figure {
   position: relative;
   overflow: hidden;
@@ -544,6 +546,9 @@ h4 { color: var(--ink); }
 .lb-prev { left: 1.5rem; top: 50%; transform: translateY(-50%); }
 .lb-next { right: 1.5rem; top: 50%; transform: translateY(-50%); }
 html.lb-open { overflow: hidden; }
+.lb-stage:has(.lb-img--tall) { place-items: start center; overflow-y: auto; }
+.lb-stage:has(.lb-img--tall) .lb-figure { max-height: none; }
+.lb-img.lb-img--tall { width: min(100%, 1100px); max-height: none; }
 
 /* ---------- About ---------- */
 .about-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 5rem; align-items: center; }

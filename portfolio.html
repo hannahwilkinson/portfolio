@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" />
-    <link rel="stylesheet" href="styles.css?v=20261120f" />
+    <link rel="stylesheet" href="styles.css?v=20261121a" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
@@ -45,24 +45,26 @@
         <div class="container">
           <p class="eyebrow">Portfolio</p>
           <h1>Selected Work</h1>
-          <p class="page-intro-text">Photography and graphic design, organized by collection. Select any image to view it larger.</p>
+          <p class="page-intro-text">Photography and graphic design, organized by collection.</p>
         </div>
       </section>
 
       <section id="portfolio" class="container section">
         <div class="filter-bar" role="group" aria-label="Filter the portfolio">
-          <button type="button" class="filter-chip" data-filter="all" aria-pressed="true">All <span class="chip-count">35</span></button>
-          <button type="button" class="filter-chip" data-filter="events" aria-pressed="false">Events <span class="chip-count">7</span></button>
+          <button type="button" class="filter-chip" data-filter="all" aria-pressed="true">All <span class="chip-count">39</span></button>
+          <!--<button type="button" class="filter-chip" data-filter="events" aria-pressed="false">Events <span class="chip-count">7</span></button>
           <button type="button" class="filter-chip" data-filter="portraits" aria-pressed="false">Portraits <span class="chip-count">5</span></button>
           <button type="button" class="filter-chip" data-filter="sports" aria-pressed="false">Sports <span class="chip-count">4</span></button>
           <button type="button" class="filter-chip" data-filter="automotive" aria-pressed="false">Automotive <span class="chip-count">7</span></button>
           <button type="button" class="filter-chip" data-filter="animals" aria-pressed="false">Animals <span class="chip-count">2</span></button>
-          <button type="button" class="filter-chip" data-filter="landscapes" aria-pressed="false">Landscapes <span class="chip-count">4</span></button>
-          <button type="button" class="filter-chip" data-filter="graphics" aria-pressed="false">Graphics <span class="chip-count">6</span></button>
+          <button type="button" class="filter-chip" data-filter="landscapes" aria-pressed="false">Landscapes <span class="chip-count">4</span></button>-->
+          <button type="button" class="filter-chip" data-filter="photography" aria-pressed="false">Photography <span class="chip-count">29</span></button>
+          <button type="button" class="filter-chip" data-filter="graphics" aria-pressed="false">Graphics <span class="chip-count">8</span></button>
+          <button type="button" class="filter-chip" data-filter="websites" aria-pressed="false">Websites <span class="chip-count">2</span></button>
         </div>
         <p id="filter-status" class="sr-only" aria-live="polite"></p>
 
-        <section class="gallery-group" aria-labelledby="photography-title">
+        <section class="gallery-group" data-group="photography" aria-labelledby="photography-title">
           <h2 id="photography-title" class="gallery-title">Photography</h2>
           <div class="collection" id="events" data-collection="events">
             <h3 class="collection-title">Events <span class="collection-count">7 photos</span></h3>
@@ -270,7 +272,7 @@
           </div>
         </section>
 
-        <section class="gallery-group" aria-labelledby="graphics-title">
+        <section class="gallery-group" data-group="graphics" aria-labelledby="graphics-title">
           <h2 id="graphics-title" class="gallery-title">Graphics</h2>
           <div class="collection" id="graphics" data-collection="graphics">
             <ul class="gallery gallery--graphics">
@@ -310,6 +312,18 @@
               <figcaption>Lewis Fellow Spotlight: Taylor Miavitz</figcaption>
             </figure>
           </li>
+          <li>
+            <figure tabindex="0">
+              <img src="images/graphics/cloud-data-fellows-logo.jpg" width="1600" height="1236" loading="lazy" alt="Cloud Data Analytics Fellows logo: a sky-blue cloud outline with a gold lightning bolt and circuit lines, beside the program name in bold sky-blue letters." />
+              <figcaption>Cloud Data Analytics Fellows Logo</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure tabindex="0">
+              <img src="images/graphics/cloud-data-fellows-icon.jpg" width="1600" height="1236" loading="lazy" alt="Cloud Data Analytics Fellows icon: a sky-blue cloud outline with a gold lightning bolt and circuit lines, raining rows of binary ones and zeros." />
+              <figcaption>Cloud Data Analytics Fellows Icon</figcaption>
+            </figure>
+          </li>
           <!--<li>
             <figure tabindex="0">
               <img src="images/graphics/harvest-time-at-the-mill.gif" width="720" height="1280" loading="lazy" alt="Animated In the News story graphic: an autumn photo of a white mill beside a creek, with the headline WVU Jackson's Mill to host annual Harvest Time at the Mill." />
@@ -334,6 +348,26 @@
               <figcaption>Fresh, Local Food in Cheat Lake</figcaption>
             </figure>
           </li>-->
+            </ul>
+          </div>
+        </section>
+
+        <section class="gallery-group" data-group="websites" aria-labelledby="websites-title">
+          <h2 id="websites-title" class="gallery-title">Websites</h2>
+          <div class="collection" id="websites" data-collection="websites">
+            <ul class="gallery gallery--websites">
+          <li>
+            <figure tabindex="0">
+              <img src="images/websites/cloud-data-hub-students.jpg" width="1600" height="4737" loading="lazy" alt="Full-page screenshot of the Cloud &amp; Climate Data Hub students page, with program highlights, student resources on cloud computing and NOAA datasets, a testimonial quote from Hannah Wilkinson, and a grid of student project showcases." />
+              <figcaption>Cloud &amp; Climate Data Hub: Students</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure tabindex="0">
+              <img src="images/websites/cloud-fellows.jpg" width="1600" height="4883" loading="lazy" alt="Full-page screenshot of the Cloud Fellows page on the Cloud &amp; Climate Data Hub, with the NOAA logo, program mission, partner university logos, featured projects, FAQs, and project showcases." />
+              <figcaption>Cloud Fellows Program</figcaption>
+            </figure>
+          </li>
             </ul>
           </div>
         </section>
@@ -369,6 +403,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=20261120f"></script>
+    <script src="script.js?v=20261121a"></script>
   </body>
 </html>
