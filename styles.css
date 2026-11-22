@@ -427,7 +427,8 @@ h4 { color: var(--ink); }
 /* ---------- Portfolio ---------- */
 .page-portfolio .section { padding-top: 4rem; }
 .gallery-title { display: flex; align-items: center; gap: 1rem; margin: 0 0 1.75rem; font-size: clamp(1.7rem, 3vw, 2.2rem); }
-.gallery-title::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+/* Dashed gold rule beside section titles (the page header keeps its solid line) */
+.gallery-title::after { content: ""; flex: 1; height: 0; border-top: 2px dashed rgba(234, 170, 0, 0.55); }
 [hidden] { display: none !important; }
 
 /* Filter buttons (stick under the header while you scroll) */
@@ -473,7 +474,8 @@ h4 { color: var(--ink); }
 .filter-chip[aria-pressed="true"] .chip-count { color: var(--navy-deep); background: var(--gold); }
 
 /* Collections */
-.gallery-group + .gallery-group { margin-top: 4.5rem; }
+/* Space between sections only when a visible section sits above (so a filtered section starts at the top) */
+.gallery-group:not([hidden]) ~ .gallery-group:not([hidden]) { margin-top: 4.5rem; }
 .collection + .collection { margin-top: 3rem; }
 .collection-title { display: flex; align-items: baseline; gap: 0.75rem; margin: 0 0 1.25rem; font-size: 1.4rem; }
 .collection-count { font: 500 0.85rem/1 var(--font-body); letter-spacing: 0; color: var(--muted); }
