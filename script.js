@@ -44,7 +44,7 @@ if ('IntersectionObserver' in window && !reduceMotion) {
     });
   }, { rootMargin: '0px 0px -8% 0px' });
 
-  document.querySelectorAll('.section-head, .explore-card, .stat, .cta-inner, .org, .card, .gallery li, .gallery-title, .contact-panel, .contact-form-card')
+  document.querySelectorAll('.section-head, .explore-card, .stat, .cta-inner, .org, .card, .gallery li, .gallery-title, .contact-panel, .contact-form-card, .journey-head, .timeline li, .journey-close')
     .forEach((el) => {
       if (el.getBoundingClientRect().top < window.innerHeight) return;
       const position = Array.prototype.indexOf.call(el.parentElement.children, el);
