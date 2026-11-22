@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" />
-    <link rel="stylesheet" href="styles.css?v=20261121b" />
+    <link rel="stylesheet" href="styles.css?v=20261121c" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
@@ -41,28 +41,30 @@
     </header>
 
     <main id="main" class="page-portfolio">
-      <section class="page-hero">
+      <section class="page-hero page-hero--portfolio">
         <div class="container">
-          <p class="eyebrow">Portfolio</p>
-          <h1>Selected Work</h1>
-          <p class="page-intro-text">Photography and graphic design, organized by collection.</p>
+          <div class="page-hero-text">
+            <p class="eyebrow">Portfolio</p>
+            <h1>Selected Work</h1>
+            <p class="page-intro-text">Photography and graphic design, organized by collection.</p>
+          </div>
+          <div class="filter-bar" role="group" aria-label="Filter the portfolio">
+            <button type="button" class="filter-chip" data-filter="all" aria-pressed="true">All <span class="chip-count">40</span></button>
+            <!--<button type="button" class="filter-chip" data-filter="events" aria-pressed="false">Events <span class="chip-count">7</span></button>
+            <button type="button" class="filter-chip" data-filter="portraits" aria-pressed="false">Portraits <span class="chip-count">5</span></button>
+            <button type="button" class="filter-chip" data-filter="sports" aria-pressed="false">Sports <span class="chip-count">4</span></button>
+            <button type="button" class="filter-chip" data-filter="automotive" aria-pressed="false">Automotive <span class="chip-count">7</span></button>
+            <button type="button" class="filter-chip" data-filter="animals" aria-pressed="false">Animals <span class="chip-count">2</span></button>
+            <button type="button" class="filter-chip" data-filter="landscapes" aria-pressed="false">Landscapes <span class="chip-count">4</span></button>-->
+            <button type="button" class="filter-chip" data-filter="photography" aria-pressed="false">Photography <span class="chip-count">29</span></button>
+            <button type="button" class="filter-chip" data-filter="graphics" aria-pressed="false">Graphics <span class="chip-count">8</span></button>
+            <button type="button" class="filter-chip" data-filter="websites" aria-pressed="false">Websites <span class="chip-count">3</span></button>
+          </div>
+          <p id="filter-status" class="sr-only" aria-live="polite"></p>
         </div>
       </section>
 
       <section id="portfolio" class="container section">
-        <div class="filter-bar" role="group" aria-label="Filter the portfolio">
-          <button type="button" class="filter-chip" data-filter="all" aria-pressed="true">All <span class="chip-count">40</span></button>
-          <!--<button type="button" class="filter-chip" data-filter="events" aria-pressed="false">Events <span class="chip-count">7</span></button>
-          <button type="button" class="filter-chip" data-filter="portraits" aria-pressed="false">Portraits <span class="chip-count">5</span></button>
-          <button type="button" class="filter-chip" data-filter="sports" aria-pressed="false">Sports <span class="chip-count">4</span></button>
-          <button type="button" class="filter-chip" data-filter="automotive" aria-pressed="false">Automotive <span class="chip-count">7</span></button>
-          <button type="button" class="filter-chip" data-filter="animals" aria-pressed="false">Animals <span class="chip-count">2</span></button>
-          <button type="button" class="filter-chip" data-filter="landscapes" aria-pressed="false">Landscapes <span class="chip-count">4</span></button>-->
-          <button type="button" class="filter-chip" data-filter="photography" aria-pressed="false">Photography <span class="chip-count">29</span></button>
-          <button type="button" class="filter-chip" data-filter="graphics" aria-pressed="false">Graphics <span class="chip-count">8</span></button>
-          <button type="button" class="filter-chip" data-filter="websites" aria-pressed="false">Websites <span class="chip-count">3</span></button>
-        </div>
-        <p id="filter-status" class="sr-only" aria-live="polite"></p>
 
         <section class="gallery-group" data-group="photography" aria-labelledby="photography-title">
           <h2 id="photography-title" class="gallery-title">Photography</h2>
@@ -409,6 +411,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=20261121b"></script>
+    <script src="script.js?v=20261121c"></script>
   </body>
 </html>
